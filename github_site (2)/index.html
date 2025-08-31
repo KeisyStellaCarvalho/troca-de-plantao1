@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Troca de Plantão</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #025aa5;
+            color: #fff;
+            padding: 1rem;
+        }
+        nav a {
+            color: #fff;
+            margin-right: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 1rem;
+            max-width: 900px;
+            margin: auto;
+        }
+        iframe {
+            width: 100%;
+            border: 0;
+        }
+
+        /* Estilos para o formulário de troca de plantão */
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #025aa5;
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #014f8c;
+        }
+        footer {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #025aa5;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Solicitação de Troca de Plantão</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="faq.html">Perguntas frequentes</a>
+            <a href="privacy.html">Privacidade</a>
+        </nav>
+    </header>
+    <main>
+        <p>Utilize o formulário abaixo para solicitar uma troca de plantão ou informar um plantão a ser passado. 
+        Seu pedido será encaminhado para aprovação do colega e do gestor conforme as regras internas.</p>
+        <p><strong>Importante:</strong> Este site não requer login. Coletamos apenas as informações essenciais (nome, e‑mail, matrícula e datas) para processar sua solicitação. Ao enviar o formulário, você concorda com o tratamento de seus dados para essa finalidade específica.</p>
+        <!-- Formulário interno para solicitar trocas de plantão -->
+        <form action="https://formsubmit.co/SEU_EMAIL_AQUI" method="POST" class="card">
+            <!--
+              As linhas abaixo servem para configurar o envio do formulário:
+              - _next: redireciona o usuário para a página de agradecimento após o envio. Substitua a URL
+                conforme o endereço final do seu site no GitHub Pages (ex.: https://seu-usuario.github.io/nome-do-repositorio/thanks.html).
+              - _subject: define o assunto do e‑mail de notificação recebido.
+              - _captcha: desativa o reCAPTCHA do FormSubmit para simplificar o envio.
+            -->
+            <input type="hidden" name="_next" value="https://SEU_USUARIO.github.io/NOME_REPOSITORIO/thanks.html">
+            <input type="hidden" name="_subject" value="Nova solicitação de troca de plantão">
+            <input type="hidden" name="_captcha" value="false">
+
+            <h2>Dados do colaborador solicitante</h2>
+            <div class="form-group">
+                <label for="nome_solicitante">Nome completo *</label>
+                <input type="text" id="nome_solicitante" name="nome_solicitante" required>
+            </div>
+            <div class="form-group">
+                <label for="matricula_solicitante">Matrícula *</label>
+                <input type="text" id="matricula_solicitante" name="matricula_solicitante" required>
+            </div>
+            <div class="form-group">
+                <label for="email_solicitante">E‑mail *</label>
+                <input type="email" id="email_solicitante" name="email_solicitante" required>
+            </div>
+            <div class="form-group">
+                <label for="setor">Setor *</label>
+                <input type="text" id="setor" name="setor" required>
+            </div>
+            <div class="form-group">
+                <label for="data_solicitacao">Data da solicitação *</label>
+                <input type="date" id="data_solicitacao" name="data_solicitacao" required>
+            </div>
+
+            <h2>Dados do colaborador solicitado (substituto)</h2>
+            <div class="form-group">
+                <label for="nome_substituto">Nome completo *</label>
+                <input type="text" id="nome_substituto" name="nome_substituto" required>
+            </div>
+            <div class="form-group">
+                <label for="matricula_substituto">Matrícula *</label>
+                <input type="text" id="matricula_substituto" name="matricula_substituto" required>
+            </div>
+            <div class="form-group">
+                <label for="email_substituto">E‑mail *</label>
+                <input type="email" id="email_substituto" name="email_substituto" required>
+            </div>
+
+            <h2>Tipo de solicitação</h2>
+            <div class="form-group">
+                <label>Selecione a natureza do pedido *</label>
+                <div>
+                    <input type="radio" id="troca" name="tipo_pedido" value="troca" required>
+                    <label for="troca">Troca de plantão</label>
+                </div>
+                <div>
+                    <input type="radio" id="passe" name="tipo_pedido" value="passe">
+                    <label for="passe">Passar plantão</label>
+                </div>
+            </div>
+
+            <h2>Datas propostas</h2>
+            <div class="form-group">
+                <label for="data_trabalhar_solicitante">Data a trabalhar (solicitante)</label>
+                <input type="date" id="data_trabalhar_solicitante" name="data_trabalhar_solicitante">
+            </div>
+            <div class="form-group">
+                <label for="data_folgar_solicitante">Data a folgar (solicitante)</label>
+                <input type="date" id="data_folgar_solicitante" name="data_folgar_solicitante">
+            </div>
+            <div class="form-group">
+                <label for="data_trabalhar_substituto">Data a trabalhar (substituto)</label>
+                <input type="date" id="data_trabalhar_substituto" name="data_trabalhar_substituto">
+            </div>
+            <div class="form-group">
+                <label for="data_folgar_substituto">Data a folgar (substituto)</label>
+                <input type="date" id="data_folgar_substituto" name="data_folgar_substituto">
+            </div>
+            <div class="form-group">
+                <label for="data_passe">Data do plantão a ser passado (quando não houver troca)</label>
+                <input type="date" id="data_passe" name="data_passe">
+            </div>
+
+            <div class="form-group">
+                <label for="observacoes">Observações (turnos, detalhes importantes)</label>
+                <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="consentimento" required>
+                    Declaro que li e concordo com a&nbsp;<a href="privacy.html" target="_blank">Política de Privacidade</a>
+                </label>
+            </div>
+
+            <button type="submit">Enviar solicitação</button>
+        </form>
+    </main>
+    <footer>
+        &copy; 2025 Sua Organização - Todos os direitos reservados
+    </footer>
+</body>
+</html>
